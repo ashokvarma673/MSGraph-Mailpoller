@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000ef01-1e8e-8000-9c51-011c48011c48_678969</versionUuid>
+    <interface>
+        <name>MMVA_displayReport</name>
+        <uuid>_a-0000ef01-1e8e-8000-9c51-011c48011c48_678958</uuid>
+        <description></description>
+        <parentUuid>cdc99331-32be-4cc4-bd08-92476497169f</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>a!localVariables(
+  local!selectedAccountExec,
+  /* This variable would normally be retrieved with a rule like rule!getOpportunities(). Here, a random set of opportunities is generated. */
+  local!opportunities: #"SYSTEM_SYSRULES_forEach"(
+    items: enumerate(100) + 1,
+    expression: {
+      id: fv!item,
+      accountExecId: tointeger(round(rand() * 14, 0)),
+      stage: round(rand() * 7, 0),
+      amount: (round(rand(), 1) * 250000) + 300000
+    }
+  ),
+  local!oppsTarget: 75,
+  local!conversionTarget: 5,
+  local!dealSizeTarget: 425,
+  local!pipelineTarget: 50,
+  #"SYSTEM_SYSRULES_headerContentLayout"(
+    contents: {
+      #"SYSTEM_SYSRULES_columnsLayout"(
+        columns: {
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              #"SYSTEM_SYSRULES_columnsLayout"(
+                columns: {
+                  #"SYSTEM_SYSRULES_columnLayout"(
+                    contents: {
+                      a!localVariables(
+                        /* This value would normally be retrieved with a rule that aggregates *
+                       * to get the total count of opportunities.                           */
+                        local!totalActiveOpps: (round(rand()*10, 0)*3)+70,
+                        {
+                          #"SYSTEM_SYSRULES_cardLayout"(
+                            contents: {
+                              #"SYSTEM_SYSRULES_richTextDisplayField"(
+                                labelPosition: "COLLAPSED",
+                                value: {
+                                  #"SYSTEM_SYSRULES_richTextItem_v1"(text: {"TOTAL ACTIVE OPPS"}, color: "SECONDARY", style: "STRONG")
+                                }
+                              ),
+                              #"SYSTEM_SYSRULES_sideBySideLayout"(
+                                items: {
+                                  #"SYSTEM_SYSRULES_sideBySideItem"(
+                                    item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                                      labelPosition: "COLLAPSED",
+                                      value: {
+                                        #"SYSTEM_SYSRULES_richTextItem_v1"(text: {local!totalActiveOpps},
+                                                       color: if(local!totalActiveOpps &gt;= local!oppsTarget, "POSITIVE", "NEGATIVE"),
+                                                       size: "LARGE"),
+                                        " ",
+                                        #"SYSTEM_SYSRULES_richTextIcon"(icon: "handshake-o", size: "LARGE")
+                                      }
+                                    )
+                                  ),
+                                  #"SYSTEM_SYSRULES_sideBySideItem"(
+                                    item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                                      labelPosition: "COLLAPSED",
+                                      value: {
+                                        #"SYSTEM_SYSRULES_richTextIcon"(icon: "bullseye", color: "SECONDARY"),
+                                        " ",
+                                        #"SYSTEM_SYSRULES_richTextItem_v1"(text: {local!oppsTarget}, color: "SECONDARY")
+                                      },
+                                      align: "RIGHT"
+                                    ),
+                                    width: "MINIMIZE"
+                                  )
+                                },
+                                alignVertical: "BOTTOM"
+                              )
+                            },
+                            height: "AUTO"
+                          )
+                        }
+                      )
+                    }
+                  ),
+                  #"SYSTEM_SYSRULES_columnLayout"(
+                    contents: {
+                      a!localVariables(
+                        /* This value would normally be retrieved with a query that aggregates *
+                       * to get the average conversion rate of all account execs.            */
+                        local!conversionRate: round(rand()*10, 1),
+                        {
+                          #"SYSTEM_SYSRULES_cardLayout"(
+                            contents: {
+                              #"SYSTEM_SYSRULES_richTextDisplayField"(
+                                labelPosition: "COLLAPSED",
+                                value: {
+                                  #"SYSTEM_SYSRULES_richTextItem_v1"(text: {"AVG CONVERSION RATE"}, color: "SECONDARY", style: "STRONG")
+                                }
+                              ),
+                              #"SYSTEM_SYSRULES_sideBySideLayout"(
+                                items: {
+                                  #"SYSTEM_SYSRULES_sideBySideItem"(
+                                    item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                                      labelPosition: "COLLAPSED",
+                                      value: {
+                                        #"SYSTEM_SYSRULES_richTextItem_v1"(
+                                          text: {
+                                            local!conversionRate,
+                                            "%",
+                                            " "
+                                          },
+                                          color: if(local!conversionRate &gt;= local!conversionTarget, "POSITIVE", "NEGATIVE"),
+                                          size: "LARGE"
+                                        ),
+                                        #"SYSTEM_SYSRULES_richTextIcon"(icon: "refresh", size: "LARGE")
+                                      }
+                                    )
+                                  ),
+                                  #"SYSTEM_SYSRULES_sideBySideItem"(
+                                    item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                                      labelPosition: "COLLAPSED",
+                                      value: {
+                                        #"SYSTEM_SYSRULES_richTextIcon"(icon: "bullseye", color: "SECONDARY"),
+                                        " ",
+                                        #"SYSTEM_SYSRULES_richTextItem_v1"(
+                                          text: {
+                                            local!conversionTarget,
+                                            "%"
+                                          },
+                                          color: "SECONDARY"
+                                        )
+                                      },
+                                      align: "RIGHT"
+                                    ),
+                                    width: "MINIMIZE"
+                                  )
+                                },
+                                alignVertical: "BOTTOM"
+                              )
+                            },
+                            height: "AUTO"
+                          )
+                        }
+                      )
+                    }
+                  )
+                },
+                stackWhen: {
+                  "PHONE",
+                  "TABLET_PORTRAIT"
+                }
+              )
+            }
+          ),
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              #"SYSTEM_SYSRULES_columnsLayout"(
+                columns: {
+                  #"SYSTEM_SYSRULES_columnLayout"(
+                    contents: {
+                      a!localVariables(
+                        /* This value would normally be retrieved with a rule that aggregates *
+                       * to get the average value of opportunities.                         */
+                        local!avgDealSize: round(rand()*100, 0) + 375,
+                        {
+                          #"SYSTEM_SYSRULES_cardLayout"(
+                            contents: {
+                              #"SYSTEM_SYSRULES_richTextDisplayField"(
+                                labelPosition: "COLLAPSED",
+                                value: {
+                                  #"SYSTEM_SYSRULES_richTextItem_v1"(text: {"AVG DEAL SIZE"}, color: "SECONDARY", style: "STRONG")
+                                }
+                              ),
+                              #"SYSTEM_SYSRULES_sideBySideLayout"(
+                                items: {
+                                  #"SYSTEM_SYSRULES_sideBySideItem"(
+                                    item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                                      labelPosition: "COLLAPSED",
+                                      value: {
+                                        #"SYSTEM_SYSRULES_richTextItem_v1"(
+                                          text: {
+                                            "$",
+                                            local!avgDealSize,
+                                            "K",
+                                            " "
+                                          },
+                                          color: if(local!avgDealSize &gt;= local!dealSizeTarget, "POSITIVE", "NEGATIVE"),
+                                          size: "LARGE"
+                                        ),
+                                        #"SYSTEM_SYSRULES_richTextIcon"(icon: "money", size: "LARGE")
+                                      }
+                                    )
+                                  ),
+                                  #"SYSTEM_SYSRULES_sideBySideItem"(
+                                    item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                                      labelPosition: "COLLAPSED",
+                                      value: {
+                                        #"SYSTEM_SYSRULES_richTextIcon"(icon: "bullseye", color: "SECONDARY"),
+                                        " ",
+                                        #"SYSTEM_SYSRULES_richTextItem_v1"(text: {"$", local!dealSizeTarget, "K"}, color: "SECONDARY")
+                                      },
+                                      align: "RIGHT"
+                                    ),
+                                    width: "MINIMIZE"
+                                  )
+                                },
+                                alignVertical: "BOTTOM"
+                              )
+                            },
+                            height: "AUTO"
+                          )
+                        }
+                      )
+                    }
+                  ),
+                  #"SYSTEM_SYSRULES_columnLayout"(
+                    contents: {
+                      a!localVariables(
+                        /* This value would normally be retrieved with a rule that aggregates *
+                       * to get the total sum of all opportunity values.                    */
+                        local!totalPipeline: round(rand()*10, 1) + 45,
+                        {
+                          #"SYSTEM_SYSRULES_cardLayout"(
+                            contents: {
+                              #"SYSTEM_SYSRULES_richTextDisplayField"(
+                                labelPosition: "COLLAPSED",
+                                value: {
+                                  #"SYSTEM_SYSRULES_richTextItem_v1"(text: {"TOTAL PIPELINE"}, color: "SECONDARY", style: "STRONG")
+                                }
+                              ),
+                              #"SYSTEM_SYSRULES_sideBySideLayout"(
+                                items: {
+                                  #"SYSTEM_SYSRULES_sideBySideItem"(
+                                    item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                                      labelPosition: "COLLAPSED",
+                                      value: {
+                                        #"SYSTEM_SYSRULES_richTextItem_v1"(
+                                          text: {"$", local!totalPipeline, "M"},
+                                          color: if(local!totalPipeline &gt;= local!pipelineTarget, "POSITIVE", "NEGATIVE"),
+                                          size: "LARGE"
+                                        ),
+                                        " ",
+                                        #"SYSTEM_SYSRULES_richTextIcon"(icon: "line-chart", size: "LARGE")
+                                      }
+                                    )
+                                  ),
+                                  #"SYSTEM_SYSRULES_sideBySideItem"(
+                                    item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                                      labelPosition: "COLLAPSED",
+                                      value: {
+                                        #"SYSTEM_SYSRULES_richTextIcon"(icon: "bullseye", color: "SECONDARY"),
+                                        " ",
+                                        #"SYSTEM_SYSRULES_richTextItem_v1"(text: {"$", local!pipelineTarget, "M"}, color: "SECONDARY")
+                                      },
+                                      align: "RIGHT"
+                                    ),
+                                    width: "MINIMIZE"
+                                  )
+                                },
+                                alignVertical: "BOTTOM"
+                              )
+                            },
+                            height: "AUTO"
+                          )
+                        }
+                      )
+                    }
+                  )
+                },
+                stackWhen: {
+                  "PHONE",
+                  "TABLET_PORTRAIT"
+                }
+              )
+            }
+          )
+        },
+        stackWhen: {
+          "PHONE",
+          "TABLET_PORTRAIT",
+          "TABLET_LANDSCAPE"
+        }
+      ),
+      #"SYSTEM_SYSRULES_columnsLayout"(
+        columns: {
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              #"SYSTEM_SYSRULES_cardLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_gridField_v4"(
+                    labelPosition: "COLLAPSED",
+                    /* Replace this with a query to get account exec info, using fv!pagingInfo */
+                    data: todatasubset(
+                      {
+                        /* The display names would normally be calculated later, based on the usernames. *
+                   * Since these usernames are fake, we're providing display names directly.       */
+                        a!map(id: 1,  username: "karen.phillips",   displayName: "Karen Phillips",   numOpps: round(rand()*10, 0)+4, totalAmt: round(rand()*10, 2)*1000000, conversion: round(rand() * 10, 1)),
+                        a!map(id: 2,  username: "suzanne.fletcher", displayName: "Suzanne Fletcher", numOpps: round(rand()*10, 0)+4, totalAmt: round(rand()*10, 2)*1000000, conversion: round(rand() * 10, 1)),
+                        a!map(id: 3,  username: "thomas.reed",      displayName: "Thomas Reed",      numOpps: round(rand()*10, 0)+4, totalAmt: round(rand()*10, 2)*1000000, conversion: round(rand() * 10, 1)),
+                        a!map(id: 4,  username: "vincent.buchanan", displayName: "Vincent Buchanan", numOpps: round(rand()*10, 0)+4, totalAmt: round(rand()*10, 2)*1000000, conversion: round(rand() * 10, 1)),
+                        a!map(id: 5,  username: "oscar.kim",        displayName: "Oscar Kim",        numOpps: round(rand()*10, 0)+4, totalAmt: round(rand()*10, 2)*1000000, conversion: round(rand() * 10, 1)),
+                        a!map(id: 6,  username: "simone.ferguson",  displayName: "Simone Ferguson",  numOpps: round(rand()*10, 0)+4, totalAmt: round(rand()*10, 2)*1000000, conversion: round(rand() * 10, 1)),
+                        a!map(id: 7,  username: "james.smith",      displayName: "James Smith",      numOpps: round(rand()*10, 0)+4, totalAmt: round(rand()*10, 2)*1000000, conversion: round(rand() * 10, 1)),
+                        a!map(id: 8,  username: "carolyn.wall",     displayName: "Carolyn Wall",     numOpps: round(rand()*10, 0)+4, totalAmt: round(rand()*10, 2)*1000000, conversion: round(rand() * 10, 1)),
+                        a!map(id: 9,  username: "franklin.stewart", displayName: "Franklin Stewart", numOpps: round(rand()*10, 0)+4, totalAmt: round(rand()*10, 2)*1000000, conversion: round(rand() * 10, 1)),
+                        a!map(id: 10, username: "dillon.booth",     displayName: "Dillon Booth",     numOpps: round(rand()*10, 0)+4, totalAmt: round(rand()*10, 2)*1000000, conversion: round(rand() * 10, 1)),
+                        a!map(id: 11, username: "josh.moreno",      displayName: "Josh Moreno",      numOpps: round(rand()*10, 0)+4, totalAmt: round(rand()*10, 2)*1000000, conversion: round(rand() * 10, 1)),
+                        a!map(id: 12, username: "conor.hale",       displayName: "Conor Hale",       numOpps: round(rand()*10, 0)+4, totalAmt: round(rand()*10, 2)*1000000, conversion: round(rand() * 10, 1)),
+                        a!map(id: 13, username: "elliana.white",    displayName: "Elliana White",    numOpps: round(rand()*10, 0)+4, totalAmt: round(rand()*10, 2)*1000000, conversion: round(rand() * 10, 1)),
+                        a!map(id: 14, username: "greg.oliver",      displayName: "Greg Oliver",      numOpps: round(rand()*10, 0)+4, totalAmt: round(rand()*10, 2)*1000000, conversion: round(rand() * 10, 1))
+                      },
+                      fv!pagingInfo
+                    ),
+                    columns: {
+                      #"SYSTEM_SYSRULES_gridColumn"(
+                        label: "Account Exec",
+                        sortField: "displayName",
+                        value: fv!row.displayName
+                      ),
+                      #"SYSTEM_SYSRULES_gridColumn"(
+                        sortField: "username",
+                        value: #"SYSTEM_SYSRULES_imageField_v1"(
+                          images: {#"SYSTEM_SYSRULES_userImage"(user: fv!row.username)},
+                          size: "TINY",
+                          style: "AVATAR"
+                        )
+                      ),
+                      #"SYSTEM_SYSRULES_gridColumn"(
+                        label: "# Opps",
+                        sortField: "numOpps",
+                        value: fv!row.numOpps,
+                        align: "END"
+                      ),
+                      #"SYSTEM_SYSRULES_gridColumn"(
+                        label: "Total Amt",
+                        sortField: "totalAmt",
+                        value: #"urn:appian:function:v1:a:currency"(isoCode: "USD", value: fv!row.totalAmt, decimalPlaces: 0, format: "SYMBOL"),
+                        align: "END"
+                      ),
+                      #"SYSTEM_SYSRULES_gridColumn"(
+                        label: "Conversion",
+                        sortField: "conversion",
+                        value: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                          value: {
+                            #"SYSTEM_SYSRULES_richTextItem_v1"(
+                              text: {fv!row.conversion, "%"},
+                              color: if(tointeger(fv!row.conversion) &gt; 7, "POSITIVE", "NEGATIVE")
+                            )
+                          },
+                          align: "RIGHT"
+                        ),
+                        align: "END"
+                      )
+                    },
+                    pageSize: 14,
+                    initialSorts: {#"SYSTEM_SYSRULES_sortInfo"("totalAmt", false)},
+                    selectable: true,
+                    selectionStyle: "ROW_HIGHLIGHT",
+                    selectionValue: index(local!selectedAccountExec, "id", {}),
+                    selectionSaveInto: {
+                      /* This save replaces the value of the previously selected item with that of the newly selected item, ensuring only one item can be selected at once. */
+                      a!save(
+                        local!selectedAccountExec,
+                        if(
+                          length(fv!selectedRows) &gt; 1,
+                          fv!selectedRows[2],
+                          fv!selectedRows
+                        )
+                      ),
+                      /* If you deselect a row, this save brings you back to the original state of the interface. */
+                      if(
+                        length(fv!deselectedRows) &gt; 0,
+                        a!save(local!selectedAccountExec, null),
+                        {}
+                      )
+                    },
+                    spacing: "DENSE",
+                    height: "MEDIUM",
+                    borderStyle: "LIGHT",
+                    rowHeader: 1
+                  )
+                },
+                height: "AUTO",
+                style: "NONE",
+                marginBelow: "STANDARD"
+              )
+            }
+          ),
+          #"SYSTEM_SYSRULES_columnLayout"(
+            contents: {
+              #"SYSTEM_SYSRULES_cardLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_columnChartField"(
+                    /* If we have a selected AccountExec, look for their name to display */
+                    label: if(
+                  isnull(local!selectedAccountExec),
+                  "",
+                  local!selectedAccountExec.displayName &amp; ": "
+                ) &amp; "Opportunities By Pipeline Stage",
+                    categories: {"Stage 1", "Stage 2", "Stage 3", "Stage 4", "Stage 5", "Stage 6", "Stage 7"},
+                    series: #"SYSTEM_SYSRULES_chartSeries"(
+                      label: "# Opportunities",
+                      data: #"SYSTEM_SYSRULES_forEach"(
+                        items: enumerate(7) + 1,
+                        expression: a!localVariables(
+                          local!oppsForStage: index(local!opportunities, wherecontains(fv!item, tointeger(local!opportunities.stage))),
+                          /* If we have a selected AccountExec, look for only their opportunities */
+                          if(
+                            isnull(local!selectedAccountExec),
+                            count(local!oppsForStage),
+                            count(where(local!selectedAccountExec.id = tointeger(local!oppsForStage.accountExecId)))
+                          )
+                        )
+                      )
+                    ),
+                    showLegend: false,
+                    showTooltips: true,
+                    labelPosition: "ABOVE",
+                    colorScheme: "OCEAN"
+                  )
+                },
+                height: "AUTO",
+                style: "NONE",
+                marginBelow: "STANDARD"
+              )
+            }
+          )
+        },
+        stackWhen: {
+          "PHONE",
+          "TABLET_PORTRAIT"
+        }
+      )
+    },
+    /*Set the background to be transparent*/
+    /*This will appear grey in Sites*/
+    /*and match the defined background color in Tempo*/
+    backgroundColor: "TRANSPARENT"
+  )
+)</definition>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+        <isCustom>false</isCustom>
+    </interface>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000ef01-1e8e-8000-9c51-011c48011c48_678969"/>
+    </history>
+</contentHaul>
