@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000ed92-de1e-8000-9be9-011c48011c48_521086</versionUuid>
+    <outboundIntegration>
+        <name>MMVA_sendEmailWithAttachment</name>
+        <uuid>cc251207-089a-4bbc-80c3-42e3da8eaf2e</uuid>
+        <description>Send email with body and attachment</description>
+        <parentUuid>cdc99331-32be-4cc4-bd08-92476497169f</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition></definition>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+        <sharedConfigParameters>
+            <a:Dictionary xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+        </sharedConfigParameters>
+        <configParameters>
+            <a:Dictionary xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <types xsi:type="a:Dictionary">
+                    <RootType xsi:type="a:Dictionary">
+                        <properties xsi:type="a:Dictionary?list">
+                            <item>
+<description xsi:type="xsd:string">Content of the message.</description>
+<refresh xsi:type="xsd:string">NEVER</refresh>
+<placeholder xsi:nil="true" xsi:type="a:Null"/>
+<isImportCustomizable xsi:type="xsd:boolean">false</isImportCustomizable>
+<instructionText xsi:type="xsd:string">Email Content.</instructionText>
+<isExpressionable xsi:type="xsd:boolean">true</isExpressionable>
+<label xsi:type="xsd:string">Content</label>
+<isRequired xsi:type="xsd:boolean">true</isRequired>
+<displayHint xsi:type="xsd:string">NORMAL</displayHint>
+<hasTransientChoices xsi:type="xsd:boolean">false</hasTransientChoices>
+<key xsi:type="xsd:string">content</key>
+<isHidden xsi:type="xsd:boolean">false</isHidden>
+<isMasked xsi:type="xsd:boolean">false</isMasked>
+<isReadOnly xsi:type="xsd:boolean">false</isReadOnly>
+<type xsi:type="xsd:string">STRING</type>
+                            </item>
+                            <item>
+<description xsi:type="xsd:string">To Recipients.</description>
+<refresh xsi:type="xsd:string">NEVER</refresh>
+<placeholder xsi:nil="true" xsi:type="a:Null"/>
+<isImportCustomizable xsi:type="xsd:boolean">false</isImportCustomizable>
+<instructionText xsi:type="xsd:string">To email address. Use comma separated values to add multiple recipients.</instructionText>
+<isExpressionable xsi:type="xsd:boolean">true</isExpressionable>
+<label xsi:type="xsd:string">To Recipients</label>
+<isRequired xsi:type="xsd:boolean">true</isRequired>
+<displayHint xsi:type="xsd:string">NORMAL</displayHint>
+<hasTransientChoices xsi:type="xsd:boolean">false</hasTransientChoices>
+<key xsi:type="xsd:string">to</key>
+<isHidden xsi:type="xsd:boolean">false</isHidden>
+<isMasked xsi:type="xsd:boolean">false</isMasked>
+<isReadOnly xsi:type="xsd:boolean">false</isReadOnly>
+<type xsi:type="xsd:string">STRING</type>
+                            </item>
+                            <item>
+<description xsi:type="xsd:string">CC Recipients.</description>
+<refresh xsi:type="xsd:string">NEVER</refresh>
+<placeholder xsi:nil="true" xsi:type="a:Null"/>
+<isImportCustomizable xsi:type="xsd:boolean">false</isImportCustomizable>
+<instructionText xsi:type="xsd:string">CC email address. Use comma separated values to add multiple recipients.</instructionText>
+<isExpressionable xsi:type="xsd:boolean">true</isExpressionable>
+<label xsi:type="xsd:string">CC Recipients</label>
+<isRequired xsi:type="xsd:boolean">false</isRequired>
+<displayHint xsi:type="xsd:string">NORMAL</displayHint>
+<hasTransientChoices xsi:type="xsd:boolean">false</hasTransientChoices>
+<key xsi:type="xsd:string">cc</key>
+<isHidden xsi:type="xsd:boolean">false</isHidden>
+<isMasked xsi:type="xsd:boolean">false</isMasked>
+<isReadOnly xsi:type="xsd:boolean">false</isReadOnly>
+<type xsi:type="xsd:string">STRING</type>
+                            </item>
+                            <item>
+<description xsi:type="xsd:string">BCC Recipients.</description>
+<refresh xsi:type="xsd:string">NEVER</refresh>
+<placeholder xsi:nil="true" xsi:type="a:Null"/>
+<isImportCustomizable xsi:type="xsd:boolean">false</isImportCustomizable>
+<instructionText xsi:type="xsd:string">BCC email address. Use comma separated values to add multiple recipients.</instructionText>
+<isExpressionable xsi:type="xsd:boolean">true</isExpressionable>
+<label xsi:type="xsd:string">BCC Recipients</label>
+<isRequired xsi:type="xsd:boolean">false</isRequired>
+<displayHint xsi:type="xsd:string">NORMAL</displayHint>
+<hasTransientChoices xsi:type="xsd:boolean">false</hasTransientChoices>
+<key xsi:type="xsd:string">bcc</key>
+<isHidden xsi:type="xsd:boolean">false</isHidden>
+<isMasked xsi:type="xsd:boolean">false</isMasked>
+<isReadOnly xsi:type="xsd:boolean">false</isReadOnly>
+<type xsi:type="xsd:string">STRING</type>
+                            </item>
+                            <item>
+<description xsi:type="xsd:string">Subject of the email.</description>
+<refresh xsi:type="xsd:string">NEVER</refresh>
+<placeholder xsi:nil="true" xsi:type="a:Null"/>
+<isImportCustomizable xsi:type="xsd:boolean">false</isImportCustomizable>
+<instructionText xsi:type="xsd:string">Email Subject.</instructionText>
+<isExpressionable xsi:type="xsd:boolean">true</isExpressionable>
+<label xsi:type="xsd:string">Subject</label>
+<isRequired xsi:type="xsd:boolean">true</isRequired>
+<displayHint xsi:type="xsd:string">NORMAL</displayHint>
+<hasTransientChoices xsi:type="xsd:boolean">false</hasTransientChoices>
+<key xsi:type="xsd:string">subject</key>
+<isHidden xsi:type="xsd:boolean">false</isHidden>
+<isMasked xsi:type="xsd:boolean">false</isMasked>
+<isReadOnly xsi:type="xsd:boolean">false</isReadOnly>
+<type xsi:type="xsd:string">STRING</type>
+                            </item>
+                            <item>
+<description xsi:nil="true" xsi:type="a:Null"/>
+<refresh xsi:type="xsd:string">NEVER</refresh>
+<placeholder xsi:nil="true" xsi:type="a:Null"/>
+<isImportCustomizable xsi:type="xsd:boolean">false</isImportCustomizable>
+<instructionText xsi:type="xsd:string">The mail will be sent with this sensitivity. Default: None</instructionText>
+<isExpressionable xsi:type="xsd:boolean">true</isExpressionable>
+<choices xsi:type="a:Dictionary?list">
+    <item>
+        <name xsi:type="xsd:string">None</name>
+        <value xsi:type="xsd:string">0</value>
+    </item>
+    <item>
+        <name xsi:type="xsd:string">Personal</name>
+        <value xsi:type="xsd:string">1</value>
+    </item>
+    <item>
+        <name xsi:type="xsd:string">Private</name>
+        <value xsi:type="xsd:string">2</value>
+    </item>
+    <item>
+        <name xsi:type="xsd:string">Confidential</name>
+        <value xsi:type="xsd:string">3</value>
+    </item>
+</choices>
+<label xsi:type="xsd:string">Email Sensitivity</label>
+<isRequired xsi:type="xsd:boolean">false</isRequired>
+<displayHint xsi:type="xsd:string">NORMAL</displayHint>
+<hasTransientChoices xsi:type="xsd:boolean">false</hasTransientChoices>
+<key xsi:type="xsd:string">sensitivity</key>
+<isHidden xsi:type="xsd:boolean">false</isHidden>
+<isMasked xsi:type="xsd:boolean">false</isMasked>
+<isReadOnly xsi:type="xsd:boolean">false</isReadOnly>
+<type xsi:type="xsd:string">STRING</type>
+                            </item>
+                            <item>
+<description xsi:nil="true" xsi:type="a:Null"/>
+<refresh xsi:type="xsd:string">NEVER</refresh>
+<placeholder xsi:nil="true" xsi:type="a:Null"/>
+<isImportCustomizable xsi:type="xsd:boolean">false</isImportCustomizable>
+<instructionText xsi:type="xsd:string">Provide Yes to pass the RTE content in content section.</instructionText>
+<isExpressionable xsi:type="xsd:boolean">true</isExpressionable>
+<label xsi:type="xsd:string">Is RTE Content?</label>
+<isRequired xsi:type="xsd:boolean">false</isRequired>
+<displayHint xsi:type="xsd:string">NORMAL</displayHint>
+<key xsi:type="xsd:string">is_private</key>
+<isHidden xsi:type="xsd:boolean">false</isHidden>
+<displayMode xsi:type="xsd:string">RADIO_BUTTON</displayMode>
+<isReadOnly xsi:type="xsd:boolean">false</isReadOnly>
+<type xsi:type="xsd:string">BOOLEAN</type>
+                            </item>
+                            <item>
+<description xsi:nil="true" xsi:type="a:Null"/>
+<refresh xsi:type="xsd:string">NEVER</refresh>
+<placeholder xsi:nil="true" xsi:type="a:Null"/>
+<isImportCustomizable xsi:type="xsd:boolean">false</isImportCustomizable>
+<instructionText xsi:type="xsd:string">Provide multiple document IDs. Max total size 25 MB.</instructionText>
+<isExpressionable xsi:type="xsd:boolean">true</isExpressionable>
+<label xsi:type="xsd:string">Add Attachments</label>
+<isRequired xsi:type="xsd:boolean">true</isRequired>
+<displayHint xsi:type="xsd:string">EXPRESSION</displayHint>
+<key xsi:type="xsd:string">file</key>
+<isHidden xsi:type="xsd:boolean">false</isHidden>
+<isReadOnly xsi:type="xsd:boolean">false</isReadOnly>
+<type xsi:type="xsd:string">LIST`DOCUMENT</type>
+                            </item>
+                        </properties>
+                        <name xsi:type="xsd:string">RootType</name>
+                    </RootType>
+                </types>
+                <state xsi:type="a:Dictionary">
+                    <bcc xsi:type="xsd:string"/>
+                    <a:entry key="#t" xsi:type="xsd:string">#/types/RootType</a:entry>
+                    <cc xsi:type="xsd:string"/>
+                    <to xsi:type="xsd:string">ashok.a.varma@accenture.com</to>
+                    <sensitivity xsi:type="xsd:string"/>
+                    <file xsi:type="a:Expression">{todocument(49030)}</file>
+                    <is_private xsi:type="xsd:boolean">false</is_private>
+                    <subject xsi:type="xsd:string">Test Email with attachment</subject>
+                    <content xsi:type="xsd:string">Testing</content>
+                </state>
+                <connectedSystemTemplateKey xsi:type="xsd:string"/>
+            </a:Dictionary>
+        </configParameters>
+        <isWrite>false</isWrite>
+        <integrationType>plugin.[com.vuram.msoutlook].[MsOutlookConnectedSystemTemplate].[SendEmailwithAttachment].READ</integrationType>
+        <connectedSystemUuid>_a-0000ed8e-9cf6-8000-9be8-011c48011c48_520445</connectedSystemUuid>
+        <isConnectedSystemConnectionOptionSelected>true</isConnectedSystemConnectionOptionSelected>
+        <integrationOutputs>
+            <a:Dictionary xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <outputs xsi:type="a:IntegrationOutput?list"/>
+            </a:Dictionary>
+        </integrationOutputs>
+        <isRequestResponseLoggingEnabled>false</isRequestResponseLoggingEnabled>
+    </outboundIntegration>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000ed92-de1e-8000-9be9-011c48011c48_521086"/>
+    </history>
+</contentHaul>

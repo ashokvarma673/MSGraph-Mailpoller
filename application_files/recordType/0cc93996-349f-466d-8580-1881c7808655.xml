@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recordTypeHaul xmlns:a="http://www.appian.com/ae/types/2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <versionUuid>f5a216fe-5641-4764-aee6-9788fe8dbe3c</versionUuid>
+  <recordType a:uuid="0cc93996-349f-466d-8580-1881c7808655" name="MMVA App Mail Poller">
+    <a:pluralName>App Mail Pollers</a:pluralName>
+    <a:description>MMVA App Mail Poller</a:description>
+    <a:urlStub>Rk-RSg</a:urlStub>
+    <a:source xsi:type="a:RecordsReplica"/>
+    <a:listViewTemplateExpr>#"SYSTEM_SYSRULES_recordGridField"(
+  columns: {
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "App Mail Poller Id",
+      sortField: 'recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{fc58cb5b-7d77-4e44-a710-1e0d87c0d40a}appMailPollerId',
+      value: #"SYSTEM_SYSRULES_richTextDisplayField"(
+        value: {
+          #"SYSTEM_SYSRULES_richTextItem_v1"(
+            text: if(
+              fv!row['recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{fc58cb5b-7d77-4e44-a710-1e0d87c0d40a}appMailPollerId'] &lt; 100000,
+              text(
+                fv!row['recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{fc58cb5b-7d77-4e44-a710-1e0d87c0d40a}appMailPollerId'],
+                "#00000"
+              ),
+              fv!row['recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{fc58cb5b-7d77-4e44-a710-1e0d87c0d40a}appMailPollerId']
+            ),
+            link: #"SYSTEM_SYSRULES_recordLink"(
+              recordType: #"urn:appian:record-type:v1:0cc93996-349f-466d-8580-1881c7808655",
+              identifier: fv!identifier
+            ),
+            linkStyle: "STANDALONE"
+          )
+        }
+      )
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Importance",
+      sortField: 'recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{0768fa56-9905-46f3-abd0-254611223983}importance',
+      value: a!defaultValue(fv!row['recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{0768fa56-9905-46f3-abd0-254611223983}importance'], "–")
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Status",
+      sortField: 'recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{c95e17e3-80e4-4ffe-b092-b04a65b36ef5}status',
+      value: a!defaultValue(fv!row['recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{c95e17e3-80e4-4ffe-b092-b04a65b36ef5}status'], "–")
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Doc Id",
+      sortField: 'recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{986abc8c-07fd-43bd-9e54-43b7bf6d43d9}docId',
+      value: a!defaultValue(fv!row['recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{986abc8c-07fd-43bd-9e54-43b7bf6d43d9}docId'], "–"),
+      align: "END"
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Doc Id No Att",
+      sortField: 'recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{c5906679-28af-4dc0-8682-49bc519f3346}docIdNoAtt',
+      value: a!defaultValue(fv!row['recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{c5906679-28af-4dc0-8682-49bc519f3346}docIdNoAtt'], "–"),
+      align: "END"
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Received Date",
+      sortField: 'recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{034bfbe9-0316-4bf1-a3e2-a305319363f5}receivedDate',
+      value: if(
+        isnull(fv!row['recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{034bfbe9-0316-4bf1-a3e2-a305319363f5}receivedDate']),
+        "–",
+        datetext(fv!row['recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{034bfbe9-0316-4bf1-a3e2-a305319363f5}receivedDate'], "default")
+      ),
+      align: "END",
+      width: "NARROW_PLUS"
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Sys Date",
+      sortField: 'recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{76fea51e-645a-43c3-a587-e4373fd4b2e5}sysDate',
+      value: if(
+        isnull(fv!row['recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{76fea51e-645a-43c3-a587-e4373fd4b2e5}sysDate']),
+        "–",
+        datetext(fv!row['recordType!{0cc93996-349f-466d-8580-1881c7808655}MMVA App Mail Poller.fields.{76fea51e-645a-43c3-a587-e4373fd4b2e5}sysDate'], "default")
+      ),
+      align: "END",
+      width: "NARROW_PLUS"
+    )
+  },
+  pageSize: 50,
+  shadeAlternateRows: true
+)</a:listViewTemplateExpr>
+    <a:detailViewCfg>
+      <a:nameExpr>#"SYSTEM_SYSRULES_rtd_getDefaultSummaryViewName"()</a:nameExpr>
+      <a:uiExpr/>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>summary</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:recordUiSecurityType>EXPRESSION</a:recordUiSecurityType>
+    </a:detailViewCfg>
+    <a:isSystem>false</a:isSystem>
+    <a:dataSrcExpr/>
+    <a:facetsListExpr/>
+    <a:titleExpr>rv!record[#"urn:appian:record-field:v1:0cc93996-349f-466d-8580-1881c7808655/96857b31-fe1a-4f1e-8980-3fd254af1827"]</a:titleExpr>
+    <a:defaultFiltersExpr/>
+    <a:layoutType>GRID</a:layoutType>
+    <a:security>16383</a:security>
+    <a:hideLatestNews>false</a:hideLatestNews>
+    <a:hideNewsView>false</a:hideNewsView>
+    <a:hideRelatedActionsView>false</a:hideRelatedActionsView>
+    <a:isExportable>true</a:isExportable>
+    <a:listViewSrcExpr/>
+    <a:recordViewSrcExpr/>
+    <a:recordRelationshipCfg>
+      <uuid>3daf3b54-a159-48ba-a4ab-6e9a119bec4f</uuid>
+      <relationshipName>appMailPollerDoc</relationshipName>
+      <targetRecordTypeUuid>231438d8-5f94-4cc0-a503-8432972cdcc4</targetRecordTypeUuid>
+      <relationshipType>ONE_TO_MANY</relationshipType>
+      <relationshipData>{"sourceRecordTypeFieldUuid":"fc58cb5b-7d77-4e44-a710-1e0d87c0d40a","targetRecordTypeFieldUuid":"c4679600-52ee-4209-9ff0-286b9400ddfa","relationshipOperator":"1","joinTableSourceField":"","joinTableTargetField":""}</relationshipData>
+      <updateBehavior>NON_CASCADING</updateBehavior>
+    </a:recordRelationshipCfg>
+    <a:recordTypeSearchCfg>
+      <searchFieldsSrc>DEFAULT</searchFieldsSrc>
+      <placeholderSrc>DEFAULT</placeholderSrc>
+      <placeholder/>
+    </a:recordTypeSearchCfg>
+    <a:iconId/>
+    <a:listAutoRefreshInterval>0.0</a:listAutoRefreshInterval>
+    <a:sourceConfiguration>
+      <sourceUuid>APP_MAIL_POLLER@jdbc/Appian</sourceUuid>
+      <sourceType>RDBMS_TABLE</sourceType>
+      <sourceSubType>NONE</sourceSubType>
+      <friendlyName>APP_MAIL_POLLER</friendlyName>
+      <sourceFilterExpr/>
+      <field>
+        <uuid>fc58cb5b-7d77-4e44-a710-1e0d87c0d40a</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Integer</type>
+        <sourceFieldName>APP_MAIL_POLLER_ID</sourceFieldName>
+        <sourceFieldType>INTEGER</sourceFieldType>
+        <fieldName>appMailPollerId</fieldName>
+        <displayName>App Mail Poller Id</displayName>
+        <isRecordId>true</isRecordId>
+        <isUnique>true</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>96857b31-fe1a-4f1e-8980-3fd254af1827</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>FROM_EMAIL</sourceFieldName>
+        <sourceFieldType>LONGVARCHAR(65535)</sourceFieldType>
+        <fieldName>fromEmail</fieldName>
+        <displayName>From Email</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>1a1b3127-c00d-4dde-a510-81c7247d3174</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>FROM_NAME</sourceFieldName>
+        <sourceFieldType>LONGVARCHAR(65535)</sourceFieldType>
+        <fieldName>fromName</fieldName>
+        <displayName>From Name</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>d80f74c5-6d8f-412a-a336-9baa2a7a7c6b</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>SUBJECT</sourceFieldName>
+        <sourceFieldType>VARCHAR(700)</sourceFieldType>
+        <fieldName>subject</fieldName>
+        <displayName>Subject</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>c4b4dc8a-1ba3-4dd1-a90d-e1301a165dcb</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>TO_EMAILS</sourceFieldName>
+        <sourceFieldType>LONGVARCHAR(65535)</sourceFieldType>
+        <fieldName>toEmails</fieldName>
+        <displayName>To Emails</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>4f282844-475b-4756-b72a-22596df210e5</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>TO_NAMES</sourceFieldName>
+        <sourceFieldType>LONGVARCHAR(65535)</sourceFieldType>
+        <fieldName>toNames</fieldName>
+        <displayName>To Names</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>8a9d5939-9a35-44d5-8653-3eef07fe7157</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>CC_EMAILS</sourceFieldName>
+        <sourceFieldType>LONGVARCHAR(65535)</sourceFieldType>
+        <fieldName>ccEmails</fieldName>
+        <displayName>Cc Emails</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>722afd66-8edf-4542-b330-fbd591dc07a6</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>CC_NAMES</sourceFieldName>
+        <sourceFieldType>LONGVARCHAR(65535)</sourceFieldType>
+        <fieldName>ccNames</fieldName>
+        <displayName>Cc Names</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>37cbd444-086e-453a-8c01-f93a175d36a1</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>BCC_EMAILS</sourceFieldName>
+        <sourceFieldType>LONGVARCHAR(65535)</sourceFieldType>
+        <fieldName>bccEmails</fieldName>
+        <displayName>Bcc Emails</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>21607b06-2015-43f1-a731-37f408f39704</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>BCC_NAMES</sourceFieldName>
+        <sourceFieldType>LONGVARCHAR(65535)</sourceFieldType>
+        <fieldName>bccNames</fieldName>
+        <displayName>Bcc Names</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>f2068e1b-c38b-4772-bdc9-e5c0a12859aa</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>IN_REPLY_TO</sourceFieldName>
+        <sourceFieldType>LONGVARCHAR(65535)</sourceFieldType>
+        <fieldName>inReplyTo</fieldName>
+        <displayName>In Reply To</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>fa0ddd08-a5fc-40f8-b118-05523aae1566</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>MESSAGE_ID</sourceFieldName>
+        <sourceFieldType>VARCHAR(500)</sourceFieldType>
+        <fieldName>messageId</fieldName>
+        <displayName>Message Id</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>true</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>e0665467-6547-451a-aa63-a57e6e83a71f</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>MESSAGE_GRAPH_ID</sourceFieldName>
+        <sourceFieldType>VARCHAR(500)</sourceFieldType>
+        <fieldName>messageGraphId</fieldName>
+        <displayName>Message Graph Id</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>0768fa56-9905-46f3-abd0-254611223983</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>IMPORTANCE</sourceFieldName>
+        <sourceFieldType>VARCHAR(32)</sourceFieldType>
+        <fieldName>importance</fieldName>
+        <displayName>Importance</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>c95e17e3-80e4-4ffe-b092-b04a65b36ef5</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>STATUS</sourceFieldName>
+        <sourceFieldType>VARCHAR(255)</sourceFieldType>
+        <fieldName>status</fieldName>
+        <displayName>Status</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>283fb9f3-302f-4c47-b5a1-ffef3d83eca3</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>BODY_TEXT</sourceFieldName>
+        <sourceFieldType>LONGVARCHAR(2147483647)</sourceFieldType>
+        <fieldName>bodyText</fieldName>
+        <displayName>Body Text</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>fbabb2a8-07c1-4d63-a27a-e1e514be79ef</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>BODY_HTML</sourceFieldName>
+        <sourceFieldType>LONGVARCHAR(2147483647)</sourceFieldType>
+        <fieldName>bodyHtml</fieldName>
+        <displayName>Body Html</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>49107bdf-6faa-48b7-98b4-b368c2db6bbb</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Text</type>
+        <sourceFieldName>BODY_SWAPPED_IMAGES</sourceFieldName>
+        <sourceFieldType>LONGVARCHAR(2147483647)</sourceFieldType>
+        <fieldName>bodySwappedImages</fieldName>
+        <displayName>Body Swapped Images</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>986abc8c-07fd-43bd-9e54-43b7bf6d43d9</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Integer</type>
+        <sourceFieldName>DOC_ID</sourceFieldName>
+        <sourceFieldType>INTEGER</sourceFieldType>
+        <fieldName>docId</fieldName>
+        <displayName>Doc Id</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>c5906679-28af-4dc0-8682-49bc519f3346</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Integer</type>
+        <sourceFieldName>DOC_ID_NO_ATT</sourceFieldName>
+        <sourceFieldType>INTEGER</sourceFieldType>
+        <fieldName>docIdNoAtt</fieldName>
+        <displayName>Doc Id No Att</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>034bfbe9-0316-4bf1-a3e2-a305319363f5</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Datetime</type>
+        <sourceFieldName>RECEIVED_DATE</sourceFieldName>
+        <sourceFieldType>TIMESTAMP</sourceFieldType>
+        <fieldName>receivedDate</fieldName>
+        <displayName>Received Date</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>76fea51e-645a-43c3-a587-e4373fd4b2e5</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Datetime</type>
+        <sourceFieldName>SYS_DATE</sourceFieldName>
+        <sourceFieldType>TIMESTAMP</sourceFieldType>
+        <fieldName>sysDate</fieldName>
+        <displayName>Sys Date</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <uuid>2e80ea57-e75c-43e3-b8ed-be662f20d9b8</uuid>
+      <refreshSchedule>
+        <frequency>DAILY</frequency>
+        <value>{"hour":3,"minute":"00","amPM":"AM","timeZone":"GMT"}</value>
+        <activated>false</activated>
+      </refreshSchedule>
+      <skipFailureEnabled>true</skipFailureEnabled>
+      <recordIdGeneratorUuid/>
+    </a:sourceConfiguration>
+    <a:enabledFeatures>511</a:enabledFeatures>
+    <a:isVisibleInRecordTypeList>false</a:isVisibleInRecordTypeList>
+    <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+    <a:showSearchBox>true</a:showSearchBox>
+    <a:isVisibleInDataFabric>false</a:isVisibleInDataFabric>
+    <a:usesRollingSyncLimit>false</a:usesRollingSyncLimit>
+    <a:usesRecoverySync>false</a:usesRecoverySync>
+    <a:isScheduledIndexingEnabled>false</a:isScheduledIndexingEnabled>
+  </recordType>
+  <roleMap>
+    <role name="record_type_administrator">
+      <users/>
+      <groups>
+        <groupUuid>fc0422ed-3913-4e33-9129-88d7a3f910c4</groupUuid>
+      </groups>
+    </role>
+    <role name="record_type_viewer">
+      <users/>
+      <groups>
+        <groupUuid>37f6fc5f-36b0-4e79-9251-836ae9fa4cc6</groupUuid>
+      </groups>
+    </role>
+  </roleMap>
+  <history>
+    <historyInfo versionUuid="f5a216fe-5641-4764-aee6-9788fe8dbe3c"/>
+  </history>
+  <migrationVersion>1</migrationVersion>
+</recordTypeHaul>

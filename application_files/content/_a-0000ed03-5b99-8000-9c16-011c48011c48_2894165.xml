@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000ed8e-9cf6-8000-9be8-011c48011c48_520535</versionUuid>
+    <interface>
+        <name>MMVA_fetchAndMatchInvoiceDataUsingGenAi</name>
+        <uuid>_a-0000ed03-5b99-8000-9c16-011c48011c48_2894165</uuid>
+        <description>fetch And Match Invoice Data Using GenAi(AI Skill)</description>
+        <parentUuid>cdc99331-32be-4cc4-bd08-92476497169f</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>a!localVariables(
+  local!mailCount,
+  local!success,
+  local!showDocument: false,
+  local!counter: 1,
+  local!customSenderResponse,
+  local!emaildata: a!refreshVariable(
+    value: #"_a-0000ed03-5b99-8000-9c16-011c48011c48_2893939"(39468),
+    refreshOnVarChange: local!counter
+  ),
+  #"SYSTEM_SYSRULES_headerContentLayout"(
+    header: {
+      #"SYSTEM_SYSRULES_billboardLayout_v1"(
+        backgroundMedia: #"SYSTEM_SYSRULES_documentImage"(
+          document: #"_a-0000ed03-5b99-8000-9c16-011c48011c48_2894218"
+        ),
+        backgroundColor: "#f0f0f0",
+        marginBelow: "MORE",
+        /*overlay: a!barOverlay(
+        contents: {
+          a!richTextDisplayField(
+            value: {
+              a!richTextItem(
+                text: "Poll Mails",
+                link: a!startProcessLink(
+                  processModel: cons!MMVA_PROCESS_MODELS[1],
+                  processParameters: { "mailbox": "sandboxtest2@yexle.com" }
+                ),
+                size: "MEDIUM_PLUS",
+                
+              ),
+              
+            },
+            align: "CENTER"
+          )
+          a!buttonLayout(
+            primaryButtons: a!buttonWidget(
+              label:"Poll Emails",
+              style: "SOLID",
+              saveInto: {
+                a!startProcess(
+                  processModel: cons!MMVA_PROCESS_MODELS[1],
+                  processParameters: { "mailbox": "sandboxtest2@yexle.com" }
+                )
+              }
+            )
+          )
+        },
+        style: "SEMI_LIGHT",
+        
+      )*/
+        
+      )
+    },
+    contents: {
+      #"SYSTEM_SYSRULES_cardLayout"(
+        contents: {
+          #"SYSTEM_SYSRULES_sideBySideLayout"(
+            items: {
+              #"SYSTEM_SYSRULES_sideBySideItem"(
+                item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                  value: {
+                    #"SYSTEM_SYSRULES_richTextIcon"(
+                      icon: "mail-bulk",
+                      size: "LARGE",
+                      color: "POSITIVE"
+                    ),
+                    #"SYSTEM_SYSRULES_richTextItem_v1"(
+                      text: if(
+                        local!showDocument,
+                        " Refresh the Mails from Mail box",
+                        "  Poll Mails from Mail box"
+                      ),
+                      link: #"SYSTEM_SYSRULES_dynamicLink"(
+                        saveInto: {
+                          #"SYSTEM_SYSRULES_startProcess3"(
+                            processModel: #"_a-0000ed03-5b99-8000-9c16-011c48011c48_2894234"[1],
+                            processParameters: {
+                              "mailbox": "appian.coe.support@accenture.com"
+                            },
+                            onSuccess: {
+                              a!save(
+                                local!mailCount,
+                                fv!processInfo.pv.mailCount
+                              ),
+                              a!save(
+                                local!success,
+                                fv!processInfo.pv.Success
+                              ),
+                              a!save(local!showDocument, true),
+                              a!save(local!counter, local!counter + 1)
+                            },
+                            
+                          )
+                        }
+                      ),
+                      size: "MEDIUM_PLUS",
+                      
+                    ),
+                    
+                  },
+                  align: "CENTER",
+                  /*showWhen: not(local!showDocument)*/
+                  
+                )
+              ),
+              #"SYSTEM_SYSRULES_sideBySideItem"(),
+              #"SYSTEM_SYSRULES_sideBySideItem"(
+                item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                  value: {
+                    #"SYSTEM_SYSRULES_richTextIcon"(
+                      icon: "mail-bulk",
+                      size: "LARGE",
+                      color: "POSITIVE"
+                    ),
+                    #"SYSTEM_SYSRULES_richTextItem_v1"(
+                      text: "Send An Email Custom Sender",
+                      link: #"SYSTEM_SYSRULES_dynamicLink"(
+                        saveInto: {
+                          #"SYSTEM_SYSRULES_startProcess3"(
+                            processModel: #"_a-0000ed03-5b99-8000-9c16-011c48011c48_2894234"[3],
+                            processParameters: {
+                              "toRecipient": "ashokkumar.raju@appian.pro"
+                            },
+                            onSuccess: {
+                              a!save(
+                                local!mailCount,
+                                fv!processInfo.pv.mailCount
+                              ),
+                              a!save(
+                                local!success,
+                                fv!processInfo.pv.Success
+                              ),
+                              a!save(local!showDocument, true),
+                              a!ave
+                            },
+                            
+                          )
+                        }
+                      ),
+                      size: "MEDIUM_PLUS",
+                      
+                    ),
+                    
+                  },
+                  align: "CENTER",
+                  showWhen: false
+                )
+              ),
+              #"SYSTEM_SYSRULES_sideBySideItem"(
+                item: #"SYSTEM_SYSRULES_richTextDisplayField"(
+                  value: {
+                    #"SYSTEM_SYSRULES_richTextIcon"(
+                      icon: "envelope",
+                      size: "LARGE",
+                      color: "POSITIVE"
+                    ),
+                    #"SYSTEM_SYSRULES_richTextItem_v1"(
+                      text: "Send Email from Common Mailbox using MS Grpah API",
+                      link: #"SYSTEM_SYSRULES_dynamicLink"(
+                        saveInto: {
+                          a!save(
+                            local!customSenderResponse,
+                            #"88bd9fcb-721a-4e43-8c30-cb6321f6096d"(
+                              content: "Testing Custom Mail Box with Mail with Document Id: " &amp; local!emaildata,
+                              recipient: "ashok.a.varma@accenture.com",
+                              subject: "Sending An Email with Custom Mail Box at " &amp; now()
+                            )
+                          )
+                        }
+                      ),
+                      size: "MEDIUM_PLUS",
+                      
+                    ),
+                    
+                  },
+                  align: "CENTER",
+                  showWhen: local!showDocument
+                )
+              )
+            }
+          ),
+          if(
+            and(
+              a!isNotNullOrEmpty(local!emaildata),
+              local!emaildata = 0
+            ),
+            #"SYSTEM_SYSRULES_richTextDisplayField"(
+              value: {
+                #"SYSTEM_SYSRULES_richTextIcon"(
+                  icon: "mail-bulk",
+                  size: "LARGE",
+                  color: "POSITIVE"
+                ),
+                #"SYSTEM_SYSRULES_richTextItem_v1"(
+                  text: "No Documents are avaialble yet, Please refresh the page to load the document",
+                  size: "MEDIUM_PLUS",
+                  
+                ),
+                
+              },
+              align: "CENTER",
+              showWhen: not(local!showDocument)
+            ),
+            #"SYSTEM_SYSRULES_documentViewerField"(
+              document: local!emaildata,
+              showWhen: local!showDocument
+            )
+          )
+        }
+      )
+    }
+  )
+)</definition>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+        <isCustom>false</isCustom>
+    </interface>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000ed03-5b99-8000-9c16-011c48011c48_2897036"/>
+        <historyInfo versionUuid="_a-0000ed8e-9cf6-8000-9be8-011c48011c48_520535"/>
+    </history>
+</contentHaul>

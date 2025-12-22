@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<groupHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>fc0422ed-3913-4e33-9129-88d7a3f910c4</versionUuid>
+    <group>
+        <name>MMVA Administrators</name>
+        <securityMap>SECURITYMAP_TEAM</securityMap>
+        <uuid>fc0422ed-3913-4e33-9129-88d7a3f910c4</uuid>
+        <groupTypeUuid>SYSTEM_GROUP_TYPE_CUSTOM</groupTypeUuid>
+        <description>Group that all MSGraph Mailpoller Validation Application activity is secured to</description>
+        <delegatedCreation>false</delegatedCreation>
+        <memberPolicy>MEMBERPOLICY_CLOSED</memberPolicy>
+        <viewingPolicy>VIEWINGPOLICY_LOW</viewingPolicy>
+        <attributes/>
+    </group>
+    <members>
+        <users/>
+        <groups/>
+    </members>
+    <admins>
+        <users/>
+        <groups>
+            <groupUuid>fc0422ed-3913-4e33-9129-88d7a3f910c4</groupUuid>
+        </groups>
+    </admins>
+    <ruleSet/>
+    <history>
+        <historyInfo versionUuid="fc0422ed-3913-4e33-9129-88d7a3f910c4"/>
+    </history>
+</groupHaul>

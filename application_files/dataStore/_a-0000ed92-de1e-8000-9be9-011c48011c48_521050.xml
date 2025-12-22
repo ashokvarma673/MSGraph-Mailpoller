@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dataStoreHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000ed92-de1e-8000-9be9-011c48011c48_521070</versionUuid>
+    <dataStore>
+        <uuid>_a-0000ed92-de1e-8000-9be9-011c48011c48_521050</uuid>
+        <name>MMVA Mail Pooler DS</name>
+        <description></description>
+        <dataSourceKey>jdbc/Appian</dataSourceKey>
+        <adaptingExplicitSqlNames>false</adaptingExplicitSqlNames>
+        <autoUpdateSchema>false</autoUpdateSchema>
+        <entities>
+            <entity>
+                <uuid>cb8d53cb-0673-4143-995b-6ea2db8380fe</uuid>
+                <name>MMVA_APP_MAIL_POLLER</name>
+                <type>{urn:com:appian:types:MMVA}MMVA_APP_MAIL_POLLER</type>
+            </entity>
+            <entity>
+                <uuid>878ddd49-fbf5-481b-8c30-1fd48278b0e6</uuid>
+                <name>MMVA_APP_MAIL_POLLER_DOC</name>
+                <type>{urn:com:appian:types:MMVA}MMVA_APP_MAIL_POLLER_DOC</type>
+            </entity>
+        </entities>
+    </dataStore>
+    <isPublished>true</isPublished>
+    <roleMap>
+        <role inherit="false" allowForAll="false" name="administrators">
+            <users/>
+            <groups>
+                <groupUuid>fc0422ed-3913-4e33-9129-88d7a3f910c4</groupUuid>
+            </groups>
+        </role>
+        <role inherit="false" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="readers">
+            <users/>
+            <groups>
+                <groupUuid>37f6fc5f-36b0-4e79-9251-836ae9fa4cc6</groupUuid>
+            </groups>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000ed92-de1e-8000-9be9-011c48011c48_521070"/>
+    </history>
+</dataStoreHaul>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000edae-ad2e-8000-9bf3-011c48011c48_541718</versionUuid>
+    <rule>
+        <name>MMVA_getEmailResponseByMailSubject</name>
+        <uuid>_a-0000ed95-2438-8000-9beb-011c48011c48_521840</uuid>
+        <description></description>
+        <parentUuid>cdc99331-32be-4cc4-bd08-92476497169f</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>if(
+  or(
+    a!isNotNullOrEmpty(ri!subject),
+    a!isNotNullOrEmpty(ri!pageBatchSize)
+  ),
+  a!localVariables(
+    local!mailData: index(
+      #"SYSTEM_SYSRULES_queryRecordType_v1"(
+        recordType: #"urn:appian:record-type:v1:0cc93996-349f-466d-8580-1881c7808655",
+        fields: {
+          #"urn:appian:record-field:v1:0cc93996-349f-466d-8580-1881c7808655/96857b31-fe1a-4f1e-8980-3fd254af1827",
+          #"urn:appian:record-field:v1:0cc93996-349f-466d-8580-1881c7808655/c4b4dc8a-1ba3-4dd1-a90d-e1301a165dcb",
+          #"urn:appian:record-field:v1:0cc93996-349f-466d-8580-1881c7808655/8a9d5939-9a35-44d5-8653-3eef07fe7157",
+          #"urn:appian:record-field:v1:0cc93996-349f-466d-8580-1881c7808655/37cbd444-086e-453a-8c01-f93a175d36a1",
+          #"urn:appian:record-field:v1:0cc93996-349f-466d-8580-1881c7808655/e0665467-6547-451a-aa63-a57e6e83a71f",
+          #"urn:appian:record-field:v1:0cc93996-349f-466d-8580-1881c7808655/fbabb2a8-07c1-4d63-a27a-e1e514be79ef",
+          #"urn:appian:record-field:v1:0cc93996-349f-466d-8580-1881c7808655/d80f74c5-6d8f-412a-a336-9baa2a7a7c6b",
+          #"urn:appian:record-field:v1:0cc93996-349f-466d-8580-1881c7808655/76fea51e-645a-43c3-a587-e4373fd4b2e5",
+          #"urn:appian:record-field:v1:0cc93996-349f-466d-8580-1881c7808655/034bfbe9-0316-4bf1-a3e2-a305319363f5",
+          #"urn:appian:record-field:v1:0cc93996-349f-466d-8580-1881c7808655/1a1b3127-c00d-4dde-a510-81c7247d3174"
+          
+        },
+        filters: #"SYSTEM_SYSRULES_queryFilter"(
+          field: #"urn:appian:record-field:v1:0cc93996-349f-466d-8580-1881c7808655/d80f74c5-6d8f-412a-a336-9baa2a7a7c6b",
+          operator: "includes",
+          value: ri!subject,
+          applyWhen: a!isNotNullOrEmpty(ri!subject)
+        ),
+        pagingInfo: #"SYSTEM_SYSRULES_pagingInfo"(
+          startIndex: 1,
+          batchSize: ri!pageBatchSize,
+          sort: #"SYSTEM_SYSRULES_sortInfo"(
+            field: #"urn:appian:record-field:v1:0cc93996-349f-466d-8580-1881c7808655/fc58cb5b-7d77-4e44-a710-1e0d87c0d40a",
+            ascending: false()
+          )
+        )
+      ),
+      "data",
+      {}
+    ),
+    reject(
+      fn!isnull,
+      #"SYSTEM_SYSRULES_forEach"(
+        items: local!mailData,
+        expression: if(
+          #"_a-0000ed95-2438-8000-9beb-011c48011c48_521949"(
+            emailSubject: index(
+              fv!item,
+              #"urn:appian:record-field:v1:0cc93996-349f-466d-8580-1881c7808655/d80f74c5-6d8f-412a-a336-9baa2a7a7c6b",
+              {}
+            )
+          ),
+          null,
+          fv!item
+        )
+      )
+    )
+  ),
+  {}
+)</definition>
+        <namedTypedValue>
+            <name>subject</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>pageBatchSize</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000edae-ad2e-8000-9bf3-011c48011c48_541718"/>
+    </history>
+</contentHaul>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<processModelFolderHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>fb931825-c81b-428a-8f03-4104dcb33528</versionUuid>
+    <processModelFolder>
+        <name>MMVA Models</name>
+        <uuid>0e177331-2aa1-43cd-95e0-0c47ce0fe041</uuid>
+        <description>Process models folder for the MSGraph Mailpoller Validation Application application</description>
+    </processModelFolder>
+    <roleMap>
+        <role name="ADMIN_OWNER">
+            <users/>
+            <groups>
+                <groupUuid>fc0422ed-3913-4e33-9129-88d7a3f910c4</groupUuid>
+            </groups>
+        </role>
+        <role name="EDITOR">
+            <users/>
+            <groups/>
+        </role>
+        <role name="EXPLICIT_NONMEMBER">
+            <users/>
+            <groups/>
+        </role>
+        <role name="VIEWER">
+            <users/>
+            <groups>
+                <groupUuid>37f6fc5f-36b0-4e79-9251-836ae9fa4cc6</groupUuid>
+            </groups>
+        </role>
+        <role name="MANAGER">
+            <users/>
+            <groups/>
+        </role>
+        <role name="INITIATOR">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="fb931825-c81b-428a-8f03-4104dcb33528"/>
+    </history>
+</processModelFolderHaul>

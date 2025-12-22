@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recordTypeHaul xmlns:a="http://www.appian.com/ae/types/2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <versionUuid>01f1fcc6-cd7a-446f-957f-114e213f874b</versionUuid>
+  <recordType a:uuid="231438d8-5f94-4cc0-a503-8432972cdcc4" name="MMVA App Mail Poller Doc">
+    <a:pluralName>App Mail Poller Docs</a:pluralName>
+    <a:description>MMVA App Mail Poller Doc</a:description>
+    <a:urlStub>T0guGA</a:urlStub>
+    <a:source xsi:type="a:RecordsReplica"/>
+    <a:listViewTemplateExpr>#"SYSTEM_SYSRULES_recordGridField"(
+  columns: {
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "App Mail Poller Doc Id",
+      sortField: 'recordType!{231438d8-5f94-4cc0-a503-8432972cdcc4}MMVA App Mail Poller Doc.fields.{2ffedee2-47d5-41d2-8ee2-9c32ba558db4}appMailPollerDocId',
+      value: #"SYSTEM_SYSRULES_richTextDisplayField"(
+        value: {
+          #"SYSTEM_SYSRULES_richTextItem_v1"(
+            text: if(
+              fv!row['recordType!{231438d8-5f94-4cc0-a503-8432972cdcc4}MMVA App Mail Poller Doc.fields.{2ffedee2-47d5-41d2-8ee2-9c32ba558db4}appMailPollerDocId'] &lt; 100000,
+              text(
+                fv!row['recordType!{231438d8-5f94-4cc0-a503-8432972cdcc4}MMVA App Mail Poller Doc.fields.{2ffedee2-47d5-41d2-8ee2-9c32ba558db4}appMailPollerDocId'],
+                "#00000"
+              ),
+              fv!row['recordType!{231438d8-5f94-4cc0-a503-8432972cdcc4}MMVA App Mail Poller Doc.fields.{2ffedee2-47d5-41d2-8ee2-9c32ba558db4}appMailPollerDocId']
+            ),
+            link: #"SYSTEM_SYSRULES_recordLink"(
+              recordType: #"urn:appian:record-type:v1:231438d8-5f94-4cc0-a503-8432972cdcc4",
+              identifier: fv!identifier
+            ),
+            linkStyle: "STANDALONE"
+          )
+        }
+      )
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "App Mail Poller Id",
+      sortField: 'recordType!{231438d8-5f94-4cc0-a503-8432972cdcc4}MMVA App Mail Poller Doc.fields.{c4679600-52ee-4209-9ff0-286b9400ddfa}appMailPollerId',
+      value: a!defaultValue(fv!row['recordType!{231438d8-5f94-4cc0-a503-8432972cdcc4}MMVA App Mail Poller Doc.fields.{c4679600-52ee-4209-9ff0-286b9400ddfa}appMailPollerId'], "–"),
+      align: "END"
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Elt",
+      sortField: 'recordType!{231438d8-5f94-4cc0-a503-8432972cdcc4}MMVA App Mail Poller Doc.fields.{5e9afb02-04a0-434f-99d0-783035dfdc6c}elt',
+      value: a!defaultValue(fv!row['recordType!{231438d8-5f94-4cc0-a503-8432972cdcc4}MMVA App Mail Poller Doc.fields.{5e9afb02-04a0-434f-99d0-783035dfdc6c}elt'], "–"),
+      align: "END"
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Doc Idx",
+      sortField: 'recordType!{231438d8-5f94-4cc0-a503-8432972cdcc4}MMVA App Mail Poller Doc.fields.{4ac15ac3-e894-4bb0-a529-d6056169d33e}docIdx',
+      value: a!defaultValue(fv!row['recordType!{231438d8-5f94-4cc0-a503-8432972cdcc4}MMVA App Mail Poller Doc.fields.{4ac15ac3-e894-4bb0-a529-d6056169d33e}docIdx'], "–"),
+      align: "END"
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Sys Date",
+      sortField: 'recordType!{231438d8-5f94-4cc0-a503-8432972cdcc4}MMVA App Mail Poller Doc.fields.{8e79f6b3-b598-4f36-a8c9-6cfbb82ecf92}sysDate',
+      value: if(
+        isnull(fv!row['recordType!{231438d8-5f94-4cc0-a503-8432972cdcc4}MMVA App Mail Poller Doc.fields.{8e79f6b3-b598-4f36-a8c9-6cfbb82ecf92}sysDate']),
+        "–",
+        datetext(fv!row['recordType!{231438d8-5f94-4cc0-a503-8432972cdcc4}MMVA App Mail Poller Doc.fields.{8e79f6b3-b598-4f36-a8c9-6cfbb82ecf92}sysDate'], "default")
+      ),
+      align: "END",
+      width: "NARROW_PLUS"
+    ),
+    #"SYSTEM_SYSRULES_gridColumn"(
+      label: "Is Inline",
+      sortField: 'recordType!{231438d8-5f94-4cc0-a503-8432972cdcc4}MMVA App Mail Poller Doc.fields.{61db3ef6-0018-4578-95e7-f5393e91c894}isInline',
+      value: if(
+        isnull(fv!row['recordType!{231438d8-5f94-4cc0-a503-8432972cdcc4}MMVA App Mail Poller Doc.fields.{61db3ef6-0018-4578-95e7-f5393e91c894}isInline']),
+        "–",
+        #"SYSTEM_SYSRULES_richTextDisplayField"(
+          value: if(
+            fv!row['recordType!{231438d8-5f94-4cc0-a503-8432972cdcc4}MMVA App Mail Poller Doc.fields.{61db3ef6-0018-4578-95e7-f5393e91c894}isInline'],
+            #"SYSTEM_SYSRULES_richTextIcon"(
+              icon: "check",
+              altText: "Yes",
+              color: "#138901"
+            ),
+            #"SYSTEM_SYSRULES_richTextIcon"(
+              icon: "times",
+              altText: "No",
+              color: "SECONDARY"
+            )
+          )
+        )
+      ),
+      align: "CENTER"
+    )
+  },
+  pageSize: 50,
+  shadeAlternateRows: true
+)</a:listViewTemplateExpr>
+    <a:detailViewCfg>
+      <a:nameExpr>#"SYSTEM_SYSRULES_rtd_getDefaultSummaryViewName"()</a:nameExpr>
+      <a:uiExpr/>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>summary</a:urlStub>
+      <a:headerExpr/>
+      <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+      <a:recordUiSecurityType>EXPRESSION</a:recordUiSecurityType>
+    </a:detailViewCfg>
+    <a:isSystem>false</a:isSystem>
+    <a:dataSrcExpr/>
+    <a:facetsListExpr/>
+    <a:titleExpr>rv!record[#"urn:appian:record-field:v1:231438d8-5f94-4cc0-a503-8432972cdcc4/2ffedee2-47d5-41d2-8ee2-9c32ba558db4"]</a:titleExpr>
+    <a:defaultFiltersExpr/>
+    <a:layoutType>GRID</a:layoutType>
+    <a:security>16383</a:security>
+    <a:hideLatestNews>false</a:hideLatestNews>
+    <a:hideNewsView>false</a:hideNewsView>
+    <a:hideRelatedActionsView>false</a:hideRelatedActionsView>
+    <a:isExportable>true</a:isExportable>
+    <a:listViewSrcExpr/>
+    <a:recordViewSrcExpr/>
+    <a:recordTypeSearchCfg>
+      <searchFieldsSrc>DEFAULT</searchFieldsSrc>
+      <placeholderSrc>DEFAULT</placeholderSrc>
+      <placeholder/>
+    </a:recordTypeSearchCfg>
+    <a:iconId/>
+    <a:listAutoRefreshInterval>0.0</a:listAutoRefreshInterval>
+    <a:sourceConfiguration>
+      <sourceUuid>APP_MAIL_POLLER_DOC@jdbc/Appian</sourceUuid>
+      <sourceType>RDBMS_TABLE</sourceType>
+      <sourceSubType>NONE</sourceSubType>
+      <friendlyName>APP_MAIL_POLLER_DOC</friendlyName>
+      <sourceFilterExpr/>
+      <field>
+        <uuid>2ffedee2-47d5-41d2-8ee2-9c32ba558db4</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Integer</type>
+        <sourceFieldName>APP_MAIL_POLLER_DOC_ID</sourceFieldName>
+        <sourceFieldType>INTEGER</sourceFieldType>
+        <fieldName>appMailPollerDocId</fieldName>
+        <displayName>App Mail Poller Doc Id</displayName>
+        <isRecordId>true</isRecordId>
+        <isUnique>true</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>c4679600-52ee-4209-9ff0-286b9400ddfa</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Integer</type>
+        <sourceFieldName>APP_MAIL_POLLER_ID</sourceFieldName>
+        <sourceFieldType>INTEGER</sourceFieldType>
+        <fieldName>appMailPollerId</fieldName>
+        <displayName>App Mail Poller Id</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>5e9afb02-04a0-434f-99d0-783035dfdc6c</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Integer</type>
+        <sourceFieldName>ELT</sourceFieldName>
+        <sourceFieldType>INTEGER</sourceFieldType>
+        <fieldName>elt</fieldName>
+        <displayName>Elt</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>4ac15ac3-e894-4bb0-a529-d6056169d33e</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Integer</type>
+        <sourceFieldName>DOC_IDX</sourceFieldName>
+        <sourceFieldType>INTEGER</sourceFieldType>
+        <fieldName>docIdx</fieldName>
+        <displayName>Doc Idx</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>8e79f6b3-b598-4f36-a8c9-6cfbb82ecf92</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Datetime</type>
+        <sourceFieldName>SYS_DATE</sourceFieldName>
+        <sourceFieldType>TIMESTAMP</sourceFieldType>
+        <fieldName>sysDate</fieldName>
+        <displayName>Sys Date</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <field>
+        <uuid>61db3ef6-0018-4578-95e7-f5393e91c894</uuid>
+        <type>{http://www.appian.com/ae/types/2009}Boolean</type>
+        <sourceFieldName>IS_INLINE</sourceFieldName>
+        <sourceFieldType>BIT</sourceFieldType>
+        <fieldName>isInline</fieldName>
+        <displayName>Is Inline</displayName>
+        <isRecordId>false</isRecordId>
+        <isUnique>false</isUnique>
+        <isCustomField>false</isCustomField>
+        <customFieldExpr/>
+        <fieldCalculationType>NA</fieldCalculationType>
+        <fieldTemplateType>NA</fieldTemplateType>
+        <recordFieldSecurityMembershipFilter/>
+        <isIndexable>false</isIndexable>
+        <subType>NA</subType>
+      </field>
+      <uuid>9e9791be-fba4-4126-b0ec-5ee3f41f6bc0</uuid>
+      <refreshSchedule>
+        <frequency>DAILY</frequency>
+        <value>{"hour":3,"minute":"00","amPM":"AM","timeZone":"GMT"}</value>
+        <activated>false</activated>
+      </refreshSchedule>
+      <skipFailureEnabled>true</skipFailureEnabled>
+      <recordIdGeneratorUuid/>
+    </a:sourceConfiguration>
+    <a:enabledFeatures>511</a:enabledFeatures>
+    <a:isVisibleInRecordTypeList>false</a:isVisibleInRecordTypeList>
+    <a:recordActionLaunchType>DIALOG</a:recordActionLaunchType>
+    <a:showSearchBox>true</a:showSearchBox>
+    <a:isVisibleInDataFabric>false</a:isVisibleInDataFabric>
+    <a:usesRollingSyncLimit>false</a:usesRollingSyncLimit>
+    <a:usesRecoverySync>false</a:usesRecoverySync>
+    <a:isScheduledIndexingEnabled>false</a:isScheduledIndexingEnabled>
+  </recordType>
+  <roleMap>
+    <role name="record_type_administrator">
+      <users/>
+      <groups>
+        <groupUuid>fc0422ed-3913-4e33-9129-88d7a3f910c4</groupUuid>
+      </groups>
+    </role>
+    <role name="record_type_viewer">
+      <users/>
+      <groups>
+        <groupUuid>37f6fc5f-36b0-4e79-9251-836ae9fa4cc6</groupUuid>
+      </groups>
+    </role>
+  </roleMap>
+  <history>
+    <historyInfo versionUuid="01f1fcc6-cd7a-446f-957f-114e213f874b"/>
+  </history>
+  <migrationVersion>1</migrationVersion>
+</recordTypeHaul>

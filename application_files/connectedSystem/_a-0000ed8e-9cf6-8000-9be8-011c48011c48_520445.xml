@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<connectedSystemHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0001ee1b-c5f6-8000-9c03-011c48011c48_624283</versionUuid>
+    <connectedSystem>
+        <name>MMVA Accenture Send Email</name>
+        <uuid>_a-0000ed8e-9cf6-8000-9be8-011c48011c48_520445</uuid>
+        <description></description>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <sharedConfigParameters>
+            <a:Dictionary xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <configurationDescriptor xsi:type="a:Dictionary">
+                    <types xsi:type="a:Dictionary">
+                        <RootType xsi:type="a:Dictionary">
+                            <properties xsi:type="a:Dictionary?list">
+<item>
+    <description xsi:type="xsd:string">EndPoint URL of the MS 365 Outlook Graph API. If not provided https://graph.microsoft.com/v1.0/ will be used as default.</description>
+    <refresh xsi:type="xsd:string">NEVER</refresh>
+    <placeholder xsi:nil="true" xsi:type="a:Null"/>
+    <isImportCustomizable xsi:type="xsd:boolean">false</isImportCustomizable>
+    <instructionText xsi:nil="true" xsi:type="a:Null"/>
+    <isExpressionable xsi:type="xsd:boolean">false</isExpressionable>
+    <label xsi:type="xsd:string">Base URL</label>
+    <isRequired xsi:type="xsd:boolean">false</isRequired>
+    <displayHint xsi:type="xsd:string">NORMAL</displayHint>
+    <hasTransientChoices xsi:type="xsd:boolean">false</hasTransientChoices>
+    <key xsi:type="xsd:string">baseURL</key>
+    <isHidden xsi:type="xsd:boolean">false</isHidden>
+    <isMasked xsi:type="xsd:boolean">false</isMasked>
+    <isReadOnly xsi:type="xsd:boolean">false</isReadOnly>
+    <type xsi:type="xsd:string">STRING</type>
+</item>
+<item>
+    <description xsi:type="xsd:string">Email Id of the MS 365 Outlook Account Setup.</description>
+    <refresh xsi:type="xsd:string">NEVER</refresh>
+    <placeholder xsi:nil="true" xsi:type="a:Null"/>
+    <isImportCustomizable xsi:type="xsd:boolean">false</isImportCustomizable>
+    <instructionText xsi:nil="true" xsi:type="a:Null"/>
+    <isExpressionable xsi:type="xsd:boolean">false</isExpressionable>
+    <label xsi:type="xsd:string">Outlook Account Setup Email Id</label>
+    <isRequired xsi:type="xsd:boolean">true</isRequired>
+    <displayHint xsi:type="xsd:string">NORMAL</displayHint>
+    <hasTransientChoices xsi:type="xsd:boolean">false</hasTransientChoices>
+    <key xsi:type="xsd:string">outlookAccountSetupEmail</key>
+    <isHidden xsi:type="xsd:boolean">false</isHidden>
+    <isMasked xsi:type="xsd:boolean">false</isMasked>
+    <isReadOnly xsi:type="xsd:boolean">false</isReadOnly>
+    <type xsi:type="xsd:string">STRING</type>
+</item>
+<item>
+    <description xsi:type="xsd:string">Tenant Id of the MS 365.</description>
+    <refresh xsi:type="xsd:string">NEVER</refresh>
+    <placeholder xsi:nil="true" xsi:type="a:Null"/>
+    <isImportCustomizable xsi:type="xsd:boolean">false</isImportCustomizable>
+    <instructionText xsi:type="xsd:string">Tenant Id can be found in your Microsoft Azure dashboard section.</instructionText>
+    <isExpressionable xsi:type="xsd:boolean">false</isExpressionable>
+    <label xsi:type="xsd:string">Tenant Id</label>
+    <isRequired xsi:type="xsd:boolean">true</isRequired>
+    <displayHint xsi:type="xsd:string">NORMAL</displayHint>
+    <hasTransientChoices xsi:type="xsd:boolean">false</hasTransientChoices>
+    <key xsi:type="xsd:string">tenantId</key>
+    <isHidden xsi:type="xsd:boolean">false</isHidden>
+    <isMasked xsi:type="xsd:boolean">false</isMasked>
+    <isReadOnly xsi:type="xsd:boolean">false</isReadOnly>
+    <type xsi:type="xsd:string">STRING</type>
+</item>
+<item>
+    <description xsi:type="xsd:string">Client Id of the MS 365.</description>
+    <refresh xsi:type="xsd:string">NEVER</refresh>
+    <placeholder xsi:nil="true" xsi:type="a:Null"/>
+    <isImportCustomizable xsi:type="xsd:boolean">false</isImportCustomizable>
+    <instructionText xsi:type="xsd:string">Client Id can be found in your Microsoft Azure dashboard section.</instructionText>
+    <isExpressionable xsi:type="xsd:boolean">false</isExpressionable>
+    <label xsi:type="xsd:string">Client Id</label>
+    <isRequired xsi:type="xsd:boolean">true</isRequired>
+    <displayHint xsi:type="xsd:string">NORMAL</displayHint>
+    <hasTransientChoices xsi:type="xsd:boolean">false</hasTransientChoices>
+    <key xsi:type="xsd:string">clientId</key>
+    <isHidden xsi:type="xsd:boolean">false</isHidden>
+    <isMasked xsi:type="xsd:boolean">false</isMasked>
+    <isReadOnly xsi:type="xsd:boolean">false</isReadOnly>
+    <type xsi:type="xsd:string">STRING</type>
+</item>
+<item>
+    <description xsi:type="xsd:string">Client Secret of the MS 365.</description>
+    <refresh xsi:type="xsd:string">NEVER</refresh>
+    <placeholder xsi:nil="true" xsi:type="a:Null"/>
+    <isImportCustomizable xsi:type="xsd:boolean">true</isImportCustomizable>
+    <instructionText xsi:type="xsd:string">Client Secret can be found in your Microsoft Azure dashboard section.</instructionText>
+    <isExpressionable xsi:type="xsd:boolean">false</isExpressionable>
+    <label xsi:type="xsd:string">Client Secret</label>
+    <isRequired xsi:type="xsd:boolean">true</isRequired>
+    <displayHint xsi:type="xsd:string">NORMAL</displayHint>
+    <key xsi:type="xsd:string">clientSecret</key>
+    <isHidden xsi:type="xsd:boolean">false</isHidden>
+    <isMasked xsi:type="xsd:boolean">true</isMasked>
+    <isReadOnly xsi:type="xsd:boolean">false</isReadOnly>
+    <type xsi:type="xsd:string">ENCRYPTED</type>
+</item>
+                            </properties>
+                            <name xsi:type="xsd:string">RootType</name>
+                        </RootType>
+                    </types>
+                    <state xsi:type="a:Dictionary">
+                        <a:entry key="#t" xsi:type="xsd:string">#/types/RootType</a:entry>
+                        <outlookAccountSetupEmail xsi:type="xsd:string">appian.coe.support@accenture.com</outlookAccountSetupEmail>
+                        <tenantId xsi:type="xsd:string">e0793d39-0939-496d-b129-198edd916feb</tenantId>
+                        <clientSecret xsi:type="a:EncryptedText"/>
+                        <clientId xsi:type="xsd:string">16e8023b-9bc6-442e-960b-741e32a24621</clientId>
+                        <baseURL xsi:type="xsd:string"/>
+                    </state>
+                    <connectedSystemTemplateKey xsi:type="xsd:string">MsOutlookConnectedSystemTemplate</connectedSystemTemplateKey>
+                </configurationDescriptor>
+                <url xsi:type="xsd:string"/>
+                <isInheritedUrlOptionSelected xsi:type="xsd:boolean">false</isInheritedUrlOptionSelected>
+                <isCstOAuth xsi:type="xsd:boolean">false</isCstOAuth>
+                <authType xsi:type="xsd:string">CSTF Auth</authType>
+                <authDetails xsi:type="a:Variant?list"/>
+            </a:Dictionary>
+        </sharedConfigParameters>
+        <logoChoice></logoChoice>
+        <integrationType>plugin.[com.vuram.msoutlook].[MsOutlookConnectedSystemTemplate]</integrationType>
+    </connectedSystem>
+    <roleMap public="true">
+        <role inherit="false" allowForAll="false" name="readers">
+            <users/>
+            <groups>
+                <groupUuid>37f6fc5f-36b0-4e79-9251-836ae9fa4cc6</groupUuid>
+            </groups>
+        </role>
+        <role inherit="false" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="administrators">
+            <users/>
+            <groups>
+                <groupUuid>fc0422ed-3913-4e33-9129-88d7a3f910c4</groupUuid>
+            </groups>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0001ee1b-c5f6-8000-9c03-011c48011c48_624283"/>
+    </history>
+</connectedSystemHaul>

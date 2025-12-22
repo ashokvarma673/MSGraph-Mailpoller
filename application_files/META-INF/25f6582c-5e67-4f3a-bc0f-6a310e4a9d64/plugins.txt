@@ -1,0 +1,8 @@
+com.vuram.msoutlook
+MS 365 Outlook Template
+1.2.2
+
+msgraphmailpoller
+MSGraph Mail Poller
+4.2.10
+
